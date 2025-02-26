@@ -124,6 +124,11 @@ APP_BACKEND_URL=http://localhost:3000
 
 #### 7. Run Application 
 
+<strong>To login in application, please use these credential : </strong> </br>
+email : admin@administrator.example.com </br>
+password : Qwerty12345#! </br>
+
+
 
 <img height="650" src="https://5an9y4lf0n50.github.io/demo-images/pos-resto/2025-01-16%2020-40-18%20High%20Res%20Screenshot.png" alt="login" />
 <br/>
