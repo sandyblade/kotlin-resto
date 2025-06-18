@@ -13,10 +13,20 @@
         android:theme="@style/Theme.FrontendApplication"
         tools:targetApi="31">
         <activity
+            android:name=".pages.ResetPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".pages.ForgotPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".pages.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".pages.DisconnectActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.FrontendApplication">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
