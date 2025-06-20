@@ -12,7 +12,8 @@ import android.content.Intent
 import android.view.View
 import android.view.ViewTreeObserver
 //import com.frontend.app.pages.DisconnectActivity
-import com.frontend.app.pages.LoginActivity
+//import com.frontend.app.pages.LoginActivity
+import com.frontend.app.pages.MainAppActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -31,11 +32,10 @@ class MainActivity : AppCompatActivity() {
 
 
                 Handler(Looper.getMainLooper()).postDelayed({
-//                    val intent = Intent(this@MainActivity, DisconnectActivity::class.java)
-                    val intent = Intent(this@MainActivity, LoginActivity::class.java)
+                    val intent = Intent(this@MainActivity, MainAppActivity::class.java)
                     startActivity(intent)
                     finish()
-                }, 3500)
+                }, 2500)
 
                 return true
             }

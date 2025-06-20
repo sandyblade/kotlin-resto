@@ -9,51 +9,58 @@
 
     <LinearLayout
         android:id="@+id/txtLinearLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:paddingHorizontal="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_marginTop="90dp"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:text="Login to your account"
-            android:textColor="#3c3c3c"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="5dp"
-            android:textAlignment="center" />
+            android:text="Login to your account"
+            android:textAlignment="center"
+            android:textColor="#3c3c3c"
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:text="Please sign in with your e-mail address and correct password."
-            android:textColor="#3c3c3c"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="15dp"
-            android:textAlignment="center" />
-
-        <ImageView
-            android:id="@+id/imageFromUrl"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:scaleType="centerCrop" />
+            android:text="Please sign in with your e-mail address and correct password."
+            android:textAlignment="center"
+            android:textColor="#3c3c3c"
+            android:textSize="14sp" />
 
     </LinearLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
+    <ImageView
+        android:id="@+id/imageFromUrl"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtLinearLayout"
+        app:layout_constraintVertical_bias="0.047" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        app:layout_constraintTop_toBottomOf="@+id/imageFromUrl"
         android:id="@+id/emailEditTextLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingHorizontal="20dp"
         android:layout_marginTop="20dp"
-        android:hint="E-Mail Address"
+        android:hint="Please Enter Your E-Mail Address"
         app:startIconDrawable="@android:drawable/ic_dialog_email">
 
         <com.google.android.material.textfield.TextInputEditText
