@@ -1,5 +1,7 @@
 package com.frontend.app
 
+
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -12,9 +14,14 @@ import android.content.Intent
 import android.view.View
 import android.view.ViewTreeObserver
 import com.frontend.app.pages.LoginActivity
-//import com.frontend.app.pages.DisconnectActivity
-//import com.frontend.app.pages.LoginActivity
-//import com.frontend.app.pages.MainAppActivity
+import com.frontend.app.helpers.AppHelper
+import okhttp3.Call
+import okhttp3.Callback
+import okhttp3.Response
+import java.io.IOException
+import com.frontend.app.pages.DisconnectActivity
+import com.frontend.app.pages.MainAppActivity
+import com.frontend.app.preferences.AppPreference
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,17 +34,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val rootView = findViewById<View>(android.R.id.content)
+
+
         rootView.viewTreeObserver.addOnPreDrawListener(object : ViewTreeObserver.OnPreDrawListener {
             override fun onPreDraw(): Boolean {
                 rootView.viewTreeObserver.removeOnPreDrawListener(this)
-
-
-                Handler(Looper.getMainLooper()).postDelayed({
-                    val intent = Intent(this@MainActivity, LoginActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                }, 2500)
-
+                ping(this@MainActivity)
                 return true
             }
         })
@@ -54,4 +56,40 @@ class MainActivity : AppCompatActivity() {
         lottieAnimationView.setAnimation(assetPath)
         lottieAnimationView.playAnimation()
     }
+
+    fun ping(context: Context) {
+
+        val client = AppHelper.getHttpClient()
+        val request = AppHelper.getHttpRequest(context, "api/ping")
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                Handler(Looper.getMainLooper()).postDelayed({
+                    val intent = Intent(this@MainActivity, DisconnectActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }, 2500)
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                val prefs = AppPreference(context)
+                val logged = prefs.isLoggedIn()
+                if(logged){
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        val intent = Intent(this@MainActivity, MainAppActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    }, 2500)
+                }else{
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        val intent = Intent(this@MainActivity, LoginActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    }, 2500)
+                }
+            }
+        })
+    }
+
+
 }

@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import com.frontend.app.R
 import com.frontend.app.pages.LoginActivity
+import com.frontend.app.preferences.AppPreference
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -57,8 +58,10 @@ class ProfileFragment : Fragment() {
             .setTitle("Exit Application")
             .setMessage("Do you want to confirm this action?")
             .setPositiveButton("Yes, Continue") { dialog, _ ->
-                dialog.dismiss()
+                val prefs = AppPreference(requireContext())
                 val intent = Intent(requireContext(), LoginActivity::class.java)
+                dialog.dismiss()
+                prefs.clear()
                 startActivity(intent)
             }
             .setNegativeButton("No") { dialog, _ ->

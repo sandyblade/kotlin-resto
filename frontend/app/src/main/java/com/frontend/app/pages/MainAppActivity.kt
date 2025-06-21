@@ -25,21 +25,55 @@ import com.frontend.app.fragments.OrderFragment
 
         bottomNav = findViewById(R.id.bottomNavigationView)
 
-        bottomNav.setOnItemSelectedListener {
-            val fragment = when (it.itemId) {
-                R.id.nav_home -> HomeFragment()
-                R.id.nav_history -> HistoryFragment()
-                R.id.nav_order -> OrderFragment()
-                R.id.nav_menu -> MenuFragment()
-                R.id.nav_profile -> ProfileFragment()
-                else -> HomeFragment()
+        bottomNav.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+
+                R.id.nav_home -> {
+                    val fragment = HomeFragment()
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainer, fragment, "Home")
+                        .commit()
+                    fragment.loadData() // ✅ Call function after switching
+                    true
+                }
+
+                R.id.nav_history -> {
+                    val fragment = HistoryFragment()
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainer, fragment, "History")
+                        .commit()
+                    fragment.loadData()
+                    true
+                }
+
+                R.id.nav_menu -> {
+                    val fragment = MenuFragment()
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainer, fragment, "Menu")
+                        .commit()
+                    fragment.loadData()
+                    true
+                }
+
+                R.id.nav_order -> {
+                    val fragment = OrderFragment()
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainer, fragment, "Order")
+                        .commit()
+                    fragment.loadData()
+                    true
+                }
+
+                R.id.nav_profile -> {
+                    val fragment = ProfileFragment()
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainer, fragment, "Profile")
+                        .commit()
+                    true
+                }
+
+                else -> false
             }
-
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainer, fragment)
-                .commit()
-
-            true
         }
 
         bottomNav.selectedItemId = R.id.nav_home
