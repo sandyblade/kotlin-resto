@@ -6,7 +6,11 @@
     <item
         android:id="@+id/nav_history"
         android:icon="@drawable/ic_history"
-        android:title="Search" />
+        android:title="History" />
+    <item
+        android:id="@+id/nav_order"
+        android:icon="@drawable/ic_food"
+        android:title="Order" />
     <item
         android:id="@+id/nav_menu"
         android:icon="@drawable/ic_menu"

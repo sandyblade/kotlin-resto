@@ -58,10 +58,17 @@
         android:id="@+id/emailEditTextLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Please Enter Your E-Mail Address"
+        app:startIconDrawable="@android:drawable/ic_dialog_email"
         android:paddingHorizontal="20dp"
         android:layout_marginTop="20dp"
-        android:hint="Please Enter Your E-Mail Address"
-        app:startIconDrawable="@android:drawable/ic_dialog_email">
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="#808080"
+        app:startIconTint="#0d6efd"
+        app:startIconCheckable="false"
+        android:backgroundTint="@android:color/white"
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/emailEditText"
@@ -81,7 +88,14 @@
         android:paddingHorizontal="20dp"
         android:hint="Please Enter Your Password"
         app:startIconDrawable="@android:drawable/ic_lock_lock"
-        app:endIconMode="password_toggle">
+        app:endIconMode="password_toggle"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="#808080"
+        app:startIconTint="#0d6efd"
+        app:startIconCheckable="false"
+        android:backgroundTint="@android:color/white"
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/passwordEditText"
@@ -109,7 +123,7 @@
             android:layout_height="wrap_content"
             android:text="Sign In Now"
             android:textColor="#FFFFFF"
-            android:backgroundTint="#2196F3"
+            android:backgroundTint="#0d6efd"
             android:layout_marginTop="10dp" />
 
         <Button
